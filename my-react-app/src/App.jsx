@@ -28,6 +28,11 @@ function App() {
         );
     };
 
+   const clearCompleted = () => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed))
+   }
+    const remainingTodos = todos.filter((todo) => !todo.completed).length;
+
     return (
         <div style={{ padding: "20px", fontFamily: "Arial" }}>
             <h1>Todo App</h1>
@@ -40,7 +45,10 @@ function App() {
                 style={{ padding: "8px", marginRight: "8px" }}
             />
 
-            <button onClick={addTodo}>Add Todo</button>
+            <button style = {{ marginLeft: "8px" }} onClick={addTodo}>Add Todo</button> 
+            <button style = {{ marginLeft: "8px" }} onClick={clearCompleted}>Clear Completed</button>
+
+            <p>Remaining todos: {remainingTodos}</p>
 
             <ul style={{ marginTop: "16px", paddingLeft: "20px" }}>
                 {todos.map((todo, index) => (
