@@ -1,0 +1,17 @@
+{
+  "name": "typescript-note-cli",
+  "version": "0.1.0",
+  "description": "A TypeScript CLI note manager with typed storage and commands.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "dev": "npx ts-node src/index.ts"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.5.4"
+  }
+}
