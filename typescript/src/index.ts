@@ -4,6 +4,7 @@ import {
   removeNote,
   searchNotes,
 } from "./notes";
+import { analyzeText } from "./stats";
 
 const args = process.argv.slice(2);
 const command = args[0]?.toLowerCase();
@@ -15,11 +16,13 @@ function printHelp(): void {
   console.log("  npm run dev list");
   console.log("  npm run dev remove <id>");
   console.log("  npm run dev search <query>");
+  console.log("  npm run dev stats <text>");
   console.log("\nExamples:");
   console.log("  npm run dev add \"Shopping\" \"Buy milk and eggs\"");
   console.log("  npm run dev list");
   console.log("  npm run dev remove 1680000000000-ab12cd34");
   console.log("  npm run dev search milk");
+  console.log("  npm run dev stats \"hello world\"");
 }
 
 async function main(): Promise<void> {
@@ -58,6 +61,20 @@ async function main(): Promise<void> {
         return;
       }
       await searchNotes(query);
+      break;
+    }
+    case "stats": {
+      const query = args.slice(1).join(" ");
+      if (!query) {
+        console.log("Error: stats command requires a text input.");
+        printHelp();
+        return;
+      }
+      const result = analyzeText(query);
+      console.log(`Text: ${result.text}`);
+      console.log(`Characters: ${result.characters}`);
+      console.log(`Words: ${result.words}`);
+      console.log(`Lines: ${result.lines}`);
       break;
     }
     case "help":
