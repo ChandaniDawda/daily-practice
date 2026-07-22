@@ -4,7 +4,7 @@ import {
   removeNote,
   searchNotes,
 } from "./notes";
-import { analyzeText } from "./stats";
+import { analyzeText, readTextFile } from "./stats";
 
 const args = process.argv.slice(2);
 const command = args[0]?.toLowerCase();
@@ -17,6 +17,7 @@ function printHelp(): void {
   console.log("  npm run dev remove <id>");
   console.log("  npm run dev search <query>");
   console.log("  npm run dev stats <text>");
+  console.log("  npm run dev stats --file <path>");
   console.log("\nExamples:");
   console.log("  npm run dev add \"Shopping\" \"Buy milk and eggs\"");
   console.log("  npm run dev list");

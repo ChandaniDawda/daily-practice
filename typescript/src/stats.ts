@@ -1,3 +1,5 @@
+import { promises as fs } from "fs";
+
 export type TextStats = {
   text: string;
   characters: number;
@@ -17,4 +19,8 @@ export function analyzeText(text: string): TextStats {
     words,
     lines,
   };
+}
+
+export async function readTextFile(filePath: string): Promise<string> {
+  return fs.readFile(filePath, "utf8");
 }
