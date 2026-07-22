@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Counter from "./Counter";
 
 function App() {
     const [todos, setTodos] = useState([]);
@@ -71,6 +72,7 @@ function App() {
                     </li>
                 ))}
             </ul>
+            <Counter label="React + TypeScript Counter" initial={0} />
         </div>
     );
 }
